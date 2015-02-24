@@ -10,10 +10,10 @@
     <RootNamespace>Rackspace.Threading</RootNamespace>
     <AssemblyName>Rackspace.Threading</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <BaseIntermediateOutputPath>obj\net35-client\</BaseIntermediateOutputPath>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <ReleaseVersion>1.0.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,22 +35,19 @@
     <DocumentationFile>bin\net35-client\Release\Rackspace.Threading.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile Condition="'$(KeyConfiguration)' == 'Final'">..\Build\keys\Rackspace.Threading.net35.snk</AssemblyOriginatorKeyFile>
     <AssemblyOriginatorKeyFile Condition="'$(KeyConfiguration)' != 'Final'">..\Build\keys\Rackspace.Threading.dev.net35.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Threading">
-      <HintPath>..\packages\TaskParallelLibrary.1.0.2856.0\lib\Net35\System.Threading.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Threading.Tasks.NET35">
+      <HintPath>..\System.Threading.Tasks.NET35.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CancellationTokenSourceExtensions.cs" />
@@ -83,12 +80,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Rackspace.KeyReporting.1.0.0\build\Rackspace.KeyReporting.targets" Condition="Exists('..\packages\Rackspace.KeyReporting.1.0.0\build\Rackspace.KeyReporting.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Rackspace.KeyReporting.1.0.0\build\Rackspace.KeyReporting.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Rackspace.KeyReporting.1.0.0\build\Rackspace.KeyReporting.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
