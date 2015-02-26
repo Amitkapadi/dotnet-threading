@@ -320,7 +320,7 @@ namespace Rackspace.Threading
             // detect any case where this results in a stack overflow.
             return stream.ReadAsync(buffer, offset, count, cancellationToken);
 #else
-            return Task<int>.Factory.FromAsync(stream.BeginRead, stream.EndRead, buffer, offset, count, null);
+            return Task<int>.Factory.FromAsync(stream.BeginRead, stream.EndRead, buffer, offset, count, TaskCreationOptions.None);
 #endif
         }
 

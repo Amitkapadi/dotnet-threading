@@ -15,7 +15,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © Sam Harwell 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: CLSCompliant(true)]
 
 #if !PORTABLE
 // Setting ComVisible to false makes the types in this assembly not visible 

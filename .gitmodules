@@ -1,0 +1,3 @@
+[submodule "System.Threading.Tasks.Net35"]
+	path = System.Threading.Tasks.Net35
+	url = https://github.com/couchbasedeps/dotnet-tpl35.git
