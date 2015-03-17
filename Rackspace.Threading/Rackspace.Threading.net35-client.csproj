@@ -16,9 +16,9 @@
     <ReleaseVersion>1.0.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>bin\net35-client\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE;NET35;NET35PLUS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -27,7 +27,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\net35-client\Release\</OutputPath>
     <DefineConstants>TRACE;NET35;NET35PLUS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -47,10 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CancellationTokenSourceExtensions.cs" />
     <Compile Include="CompletedTask.cs" />
     <Compile Include="CoreTaskExtensions.cs" />
-    <Compile Include="DelayedTask.cs" />
     <Compile Include="IAsyncDisposable.cs" />
     <Compile Include="IProgress`1.cs" />
     <Compile Include="NamespaceDoc.cs" />
@@ -61,7 +59,6 @@
     <Compile Include="TaskBlocks.cs" />
     <Compile Include="TaskCompletionSourceExtensions.cs" />
     <Compile Include="VoidResult.cs" />
-    <Compile Include="WebRequestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\keys\Rackspace.Threading.dev.net35.snk">

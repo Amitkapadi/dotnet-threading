@@ -18,25 +18,8 @@ namespace Rackspace.Threading
         {
             get
             {
-                return FromResult(default(VoidResult));
+                return Task.FromResult(default(VoidResult));
             }
-        }
-
-        /// <summary>
-        /// Gets a completed <see cref="Task{TResult}"/> with the specified result.
-        /// </summary>
-        /// <typeparam name="TResult">The task result type.</typeparam>
-        /// <param name="result">The result of the completed task.</param>
-        /// <returns>A completed <see cref="Task{TResult}"/>, whose <see cref="Task{TResult}.Result"/> property returns the specified <paramref name="result"/>.</returns>
-        public static Task<TResult> FromResult<TResult>(TResult result)
-        {
-#if NET45PLUS
-            return Task.FromResult(result);
-#else
-            TaskCompletionSource<TResult> completionSource = new TaskCompletionSource<TResult>();
-            completionSource.SetResult(result);
-            return completionSource.Task;
-#endif
         }
 
         /// <summary>

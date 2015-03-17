@@ -13,3 +13,4 @@ TestResults/
 
 # Roslyn IntelliSense Cache
 *.sln.ide/
+*.userprefs

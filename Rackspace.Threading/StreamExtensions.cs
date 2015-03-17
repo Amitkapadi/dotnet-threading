@@ -13,6 +13,28 @@ namespace Rackspace.Threading
     /// <threadsafety static="true" instance="false"/>
     public static class StreamExtensions
     {
+        public static void CopyTo (this Stream source, Stream destination)
+        {
+            CopyTo (source, destination, 16*1024);
+        }
+
+        public static void CopyTo (this Stream source, Stream destination, int bufferSize)
+        {
+            if (destination == null)
+                throw new ArgumentNullException ("destination");
+            if (!source.CanRead)
+                throw new NotSupportedException ("This stream does not support reading");
+            if (!destination.CanWrite)
+                throw new NotSupportedException ("This destination stream does not support writing");
+            if (bufferSize <= 0)
+                throw new ArgumentOutOfRangeException ("bufferSize");
+
+            var buffer = new byte [bufferSize];
+            int nread;
+            while ((nread = source.Read (buffer, 0, bufferSize)) != 0)
+                destination.Write (buffer, 0, nread);
+        }
+
         /// <summary>
         /// Asynchronously reads the bytes from a source stream and writes them to a destination stream.
         /// </summary>
@@ -149,7 +171,8 @@ namespace Rackspace.Threading
             // detect any case where this results in a stack overflow.
             return stream.CopyToAsync(destination, bufferSize, cancellationToken);
 #else
-            return CopyToAsync(stream, destination, new byte[bufferSize], cancellationToken);
+            //return CopyToAsync(stream, destination, new byte[bufferSize], cancellationToken);
+            return Task.Factory.StartNew(() => stream.CopyTo(destination, bufferSize), cancellationToken);
 #endif
         }
 

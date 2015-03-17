@@ -795,7 +795,7 @@ namespace Rackspace.Threading
                     }
                     else
                     {
-                        return CompletedTask.FromResult(default(TResult));
+                        return Task.FromResult(default(TResult));
                     }
                 };
 
