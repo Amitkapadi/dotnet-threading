@@ -13,6 +13,16 @@ namespace Rackspace.Threading
     /// <threadsafety static="true" instance="false"/>
     public static class StreamExtensions
     {
+        public static Task<Stream> GetRequestStreamAsync(this System.Net.HttpWebRequest request)
+        {
+            return Task<Stream>.Factory.FromAsync(request.BeginGetRequestStream, request.EndGetRequestStream, null);
+        }
+
+        public static Task<System.Net.WebResponse> GetResponseAsync(this System.Net.HttpWebRequest request)
+        {
+            return Task<System.Net.WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, null);
+        }
+
         public static void CopyTo (this Stream source, Stream destination)
         {
             CopyTo (source, destination, 16*1024);
